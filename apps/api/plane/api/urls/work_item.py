@@ -82,6 +82,11 @@ old_url_patterns = [
         IssueAttachmentDetailAPIEndpoint.as_view(http_method_names=["get", "patch", "delete"]),
         name="issue-attachment",
     ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/relations/",
+        IssueRelationListCreateAPIEndpoint.as_view(http_method_names=["get", "post", "delete"]),
+        name="issue-relation-list",
+    ),
 ]
 
 # New url patterns with work-items as the prefix
@@ -148,7 +153,7 @@ new_url_patterns = [
     ),
     path(
         "workspaces/<str:slug>/projects/<uuid:project_id>/work-items/<uuid:issue_id>/relations/",
-        IssueRelationListCreateAPIEndpoint.as_view(http_method_names=["get", "post"]),
+        IssueRelationListCreateAPIEndpoint.as_view(http_method_names=["get", "post", "delete"]),
         name="work-item-relation-list",
     ),
 ]
